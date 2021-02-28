@@ -1,0 +1,20 @@
+<dictionary xmlns:xi="http://www.w3.org/2003/XInclude">
+  <suite name="Radio Commands" code="RDIO" description="Radio Commands">
+    <command name="toggleplay" code="RDIOTPLY" description="Toggle radio playing currently selected station (if any)">
+      <cocoa class="Radio.RadioScriptTogglePlayCommand"/>
+    </command>
+    
+    <command name="play" code="RDIOPLAY" description="Play currently selected station (if any)">
+      <cocoa class="Radio.RadioScriptPlayCommand"/>
+    </command>
+    
+    <command name="stop" code="RDIOSTOP" description="Stop currently selected station (if any)">
+      <cocoa class="Radio.RadioScriptStopCommand"/>
+    </command>
+    
+    <command name="list stations" code="RDIOLIST" description="List Stations">
+      <cocoa class="Radio.RadioScriptListStationsCommand"/>
+    </command>
+  </suite>
+</dictionary>
+
