@@ -5,7 +5,7 @@ All from your menu bar!
 
 # What is this?
 
-We are releasing this codebase as open-source under the MIT license. It represents a work-in-progress re-write of [Radio](https://github.com/hetissimpel/radioformac) that is very much unfinished.
+We are releasing this codebase as open-source under the MIT license. It represents a work-in-progress re-write of [Radio](https://github.com/hetissimpel/radioformac) in Swift that is very much unfinished.
 
 # Is this actively being developed?
 
