@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="1b5-xt-4Jy">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="17008"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="3Uj-aU-ViE">
+            <objects>
+                <windowController storyboardIdentifier="PreferencesWindowController" showSeguePresentationStyle="single" id="1b5-xt-4Jy" customClass="PreferencesWindowController" customModule="Radio" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vgg-nC-9ZS">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="23" y="362" width="630" height="545"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+                        <value key="minSize" type="size" width="630" height="545"/>
+                        <value key="maxSize" type="size" width="630" height="545"/>
+                        <connections>
+                            <outlet property="delegate" destination="1b5-xt-4Jy" id="7wm-iu-cmH"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="rTA-UJ-ePb" kind="relationship" relationship="window.shadowedContentViewController" id="pS0-Xu-2Av"/>
+                    </connections>
+                </windowController>
+                <customObject id="qXu-w5-kQo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-738" y="-599"/>
+        </scene>
+        <!--Preferences-->
+        <scene sceneID="JZc-lW-u2e">
+            <objects>
+                <tabViewController title="Preferences" showSeguePresentationStyle="single" tabStyle="toolbar" id="rTA-UJ-ePb" customClass="PreferencesViewController" customModule="Radio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label="Stations" identifier="StationsTab" image="preferences_stations" id="Hy2-KQ-0Fd"/>
+                        <tabViewItem label="Favorites" identifier="FavoritesTab" image="preferences_favorites" id="kuQ-lf-JnE"/>
+                        <tabViewItem label="Recordings" identifier="RecordingsTab" image="preferences_recordings" id="wnp-ep-xyr"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="JFn-io-6cA">
+                        <rect key="frame" x="0.0" y="0.0" width="630" height="545"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="system"/>
+                        <connections>
+                            <outlet property="delegate" destination="rTA-UJ-ePb" id="Pps-fy-tgj"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="JFn-io-6cA" id="9se-Qt-cdE"/>
+                        <segue destination="6pg-fy-lXi" kind="relationship" relationship="tabItems" id="EKg-9W-b8f"/>
+                        <segue destination="wXw-am-rZ2" kind="relationship" relationship="tabItems" id="Du8-yU-v7B"/>
+                        <segue destination="41E-2h-Nn3" kind="relationship" relationship="tabItems" id="eeP-vh-y6f"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="gbh-RG-i65" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="-608"/>
+        </scene>
+        <!--Stations-->
+        <scene sceneID="UM1-ct-xX8">
+            <objects>
+                <viewController title="Stations" showSeguePresentationStyle="single" id="6pg-fy-lXi" customClass="StationsViewController" customModule="Radio" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="dJr-Ob-iqj">
+                        <rect key="frame" x="0.0" y="0.0" width="630" height="545"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-aG-pw2">
+                                <rect key="frame" x="20" y="503" width="590" height="22"/>
+                                <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search for stations" usesSingleLineMode="YES" bezelStyle="round" maximumRecents="5" recentsAutosaveName="StationSearches" id="Pai-4H-PFD">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </searchFieldCell>
+                                <accessibility description="Search" help="Search for stations." identifier="SearchField"/>
+                                <connections>
+                                    <outlet property="delegate" destination="6pg-fy-lXi" id="a2J-qU-uW5"/>
+                                </connections>
+                            </searchField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Stj-Xc-XQS">
+                                <rect key="frame" x="13" y="13" width="60" height="32"/>
+                                <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9pt-h4-qgr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility description="Play" help="Press to listen to the selected station." identifier="PlayBtn"/>
+                                <connections>
+                                    <action selector="playBtnPressed:" target="6pg-fy-lXi" id="d7P-DZ-4GY"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ztP-vV-LLR">
+                                <rect key="frame" x="71" y="13" width="69" height="32"/>
+                                <buttonCell key="cell" type="push" title="Edit..." bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DpM-G6-dSP">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <accessibility description="Edit" help="Press to update the selected station." identifier="EditBtn"/>
+                                <connections>
+                                    <action selector="editBtnPressed:" target="6pg-fy-lXi" id="PxG-4h-t8r"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EMe-3T-UTw">
+                                <rect key="frame" x="138" y="13" width="85" height="32"/>
+                                <buttonCell key="cell" type="push" title="Delete..." bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VdH-Ea-zT7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="deleteBtnPressed:" target="6pg-fy-lXi" id="EsC-PV-VEM"/>
+                                    </connections>
+                                </buttonCell>
+                                <accessibility description="Delete" help="Press to remove the selected station." identifier="DeleteBtn"/>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7E7-Xw-s5X">
+                                <rect key="frame" x="470" y="13" width="147" height="32"/>
+                                <buttonCell key="cell" type="push" title="Add New Station..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="suB-4c-xDa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="addBtnPressed:" target="6pg-fy-lXi" id="Xwb-8f-Rup"/>
+                                    </connections>
+                                </buttonCell>
+                                <accessibility description="Add new station" help="Press to add a new station to your library" identifier="AddNewStationBtn"/>
+                            </button>
+                            <tabView translatesAutoresizingMaskIntoConstraints="NO" id="XZL-tz-Zoi">
+                                <rect key="frame" x="13" y="447" width="604" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4fr-OT-Evw"/>
+                                </constraints>
+                                <font key="font" metaFont="system"/>
+                                <tabViewItems>
+                                    <tabViewItem label="All Stations" identifier="AllStationsTabViewItem" id="Z5l-Sc-asa">
+                                        <view key="view" id="XoX-fY-tPa">
+                                            <rect key="frame" x="10" y="33" width="584" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="My Stations" identifier="MyStationsTabViewItem" id="Ug8-nH-D6w">
+                                        <view key="view" id="eLX-yt-jbx">
+                                            <rect key="frame" x="10" y="33" width="584" height="5"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </view>
+                                    </tabViewItem>
+                                </tabViewItems>
+                                <connections>
+                                    <outlet property="delegate" destination="6pg-fy-lXi" id="Kvp-RW-x9A"/>
+                                </connections>
+                            </tabView>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXj-5t-ctn">
+                                <rect key="frame" x="20" y="60" width="590" height="398"/>
+                                <clipView key="contentView" id="TMf-Gt-a90">
+                                    <rect key="frame" x="1" y="1" width="588" height="396"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" multipleSelection="NO" emptySelection="NO" autosaveName="stationsTable" rowSizeStyle="automatic" headerView="yiK-FY-6Ee" viewBased="YES" id="QDR-8L-ixe">
+                                            <rect key="frame" x="0.0" y="0.0" width="588" height="371"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="118" minWidth="40" maxWidth="1000" id="rpT-xH-BqQ">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Name">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="9NB-5N-cT7">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="yeY-T4-JnO">
+                                                            <rect key="frame" x="11" y="1" width="123" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="41a-Sb-hD5">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="123" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="PQV-C2-tos">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="NameCell"/>
+                                                                    <connections>
+                                                                        <binding destination="yeY-T4-JnO" name="value" keyPath="objectValue.name" id="n0J-2n-ZIg">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="41a-Sb-hD5" id="cvs-4P-vRT"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="BvJ-I9-UTc" name="value" keyPath="arrangedObjects.name" id="9cL-pr-Vbh">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn width="150.5" minWidth="40" maxWidth="1000" id="uf6-1g-eeH">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Description">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="S8L-Nz-Ng7">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="b7e-uK-RQo">
+                                                            <rect key="frame" x="137" y="1" width="150" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVl-h7-onC">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="2K8-Ri-1jh">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="DescriptionCell"/>
+                                                                    <connections>
+                                                                        <binding destination="b7e-uK-RQo" name="value" keyPath="objectValue.desc" id="T8c-4M-jqn">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="jVl-h7-onC" id="Z49-jc-9zY"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="BvJ-I9-UTc" name="value" keyPath="arrangedObjects.desc" id="qQ3-Lb-UAI">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn width="152.5" minWidth="10" maxWidth="3.4028234663852886e+38" id="mCp-w4-5Lf">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="City">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="bM5-OO-7xk">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="kHF-jG-g7F">
+                                                            <rect key="frame" x="290" y="1" width="153" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pfN-P9-Ahn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="vkb-kv-iTK">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="CityCell"/>
+                                                                    <connections>
+                                                                        <binding destination="kHF-jG-g7F" name="value" keyPath="objectValue.city" id="5vW-wU-PvC">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="pfN-P9-Ahn" id="Uka-xb-bfo"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="BvJ-I9-UTc" name="value" keyPath="arrangedObjects.city" id="PUc-Mj-2vc">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </tableColumn>
+                                                <tableColumn width="117" minWidth="10" maxWidth="3.4028234663852886e+38" id="3Nn-eD-FgP">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Country">
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Ta3-Bt-D2E">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView id="7op-8t-JEP">
+                                                            <rect key="frame" x="446" y="1" width="121" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jJi-nM-MHL">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="121" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="8Pg-Ln-ICw">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <accessibility identifier="CountryCell"/>
+                                                                    <connections>
+                                                                        <binding destination="7op-8t-JEP" name="value" keyPath="objectValue.country" id="iwD-ij-FKz">
+                                                                            <dictionary key="options">
+                                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                    </connections>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="jJi-nM-MHL" id="6vO-z7-WCQ"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                    <connections>
+                                                        <binding destination="BvJ-I9-UTc" name="value" keyPath="arrangedObjects.country" id="TCJ-uD-HyQ">
+                                                            <dictionary key="options">
+                                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                                            </dictionary>
+                                                        </binding>
+                                                    </connections>
+                                                </tableColumn>
+                                            </tableColumns>
+                                            <accessibility description="Stations" help="List of stations in your library." identifier="StationsTable"/>
+                                            <connections>
+                                                <action trigger="doubleAction" selector="doubleActionPerformed:" target="6pg-fy-lXi" id="xfw-2g-qwE"/>
+                                                <binding destination="BvJ-I9-UTc" name="content" keyPath="arrangedObjects" id="e7c-mk-IeF"/>
+                                                <binding destination="BvJ-I9-UTc" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="e7c-mk-IeF" id="Y1Q-PY-0qT"/>
+                                                <outlet property="dataSource" destination="6pg-fy-lXi" id="awh-Aj-AGA"/>
+                                                <outlet property="delegate" destination="6pg-fy-lXi" id="Cww-1a-gKw"/>
+                                            </connections>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="7nq-Yp-Ydh">
+                                    <rect key="frame" x="1" y="370" width="548" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mzW-Xv-hFb">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <tableHeaderView key="headerView" wantsLayer="YES" id="yiK-FY-6Ee">
+                                    <rect key="frame" x="0.0" y="0.0" width="588" height="25"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableHeaderView>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7E7-Xw-s5X" secondAttribute="trailing" constant="20" id="1GR-Dc-X8P"/>
+                            <constraint firstItem="CVE-aG-pw2" firstAttribute="leading" secondItem="dJr-Ob-iqj" secondAttribute="leading" constant="20" id="AzA-X5-gfg"/>
+                            <constraint firstAttribute="bottom" secondItem="7E7-Xw-s5X" secondAttribute="bottom" constant="20" id="Dgw-1e-AZ0"/>
+                            <constraint firstItem="ztP-vV-LLR" firstAttribute="leading" secondItem="Stj-Xc-XQS" secondAttribute="trailing" constant="12" id="G17-R4-d1d"/>
+                            <constraint firstItem="EXj-5t-ctn" firstAttribute="leading" secondItem="dJr-Ob-iqj" secondAttribute="leading" constant="20" id="LtM-ad-Xdg"/>
+                            <constraint firstAttribute="bottom" secondItem="EMe-3T-UTw" secondAttribute="bottom" constant="20" id="MGt-4F-jLH"/>
+                            <constraint firstItem="EXj-5t-ctn" firstAttribute="top" secondItem="CVE-aG-pw2" secondAttribute="bottom" constant="45" id="MuE-6l-t5w"/>
+                            <constraint firstItem="Stj-Xc-XQS" firstAttribute="top" secondItem="EXj-5t-ctn" secondAttribute="bottom" constant="20" id="PF3-sr-RuT"/>
+                            <constraint firstItem="EMe-3T-UTw" firstAttribute="leading" secondItem="ztP-vV-LLR" secondAttribute="trailing" constant="12" id="UKO-f8-za6"/>
+                            <constraint firstAttribute="bottom" secondItem="Stj-Xc-XQS" secondAttribute="bottom" constant="20" id="X6U-wC-ely"/>
+                            <constraint firstAttribute="trailing" secondItem="CVE-aG-pw2" secondAttribute="trailing" constant="20" id="bDs-Mv-6bl"/>
+                            <constraint firstAttribute="trailing" secondItem="EXj-5t-ctn" secondAttribute="trailing" constant="20" id="dzU-et-sI3"/>
+                            <constraint firstItem="XZL-tz-Zoi" firstAttribute="leading" secondItem="dJr-Ob-iqj" secondAttribute="leading" constant="20" id="hzT-gQ-ku6"/>
+                            <constraint firstAttribute="bottom" secondItem="ztP-vV-LLR" secondAttribute="bottom" constant="20" id="mbb-5t-83y"/>
+                            <constraint firstItem="CVE-aG-pw2" firstAttribute="top" secondItem="dJr-Ob-iqj" secondAttribute="top" constant="20" id="prZ-w7-pqm"/>
+                            <constraint firstItem="Stj-Xc-XQS" firstAttribute="leading" secondItem="dJr-Ob-iqj" secondAttribute="leading" constant="20" id="psa-fd-Qvr"/>
+                            <constraint firstAttribute="trailing" secondItem="XZL-tz-Zoi" secondAttribute="trailing" constant="20" id="qdN-ch-ofF"/>
+                            <constraint firstItem="XZL-tz-Zoi" firstAttribute="top" secondItem="CVE-aG-pw2" secondAttribute="bottom" constant="11" id="wpb-XJ-RmY"/>
+                        </constraints>
+                    </view>
+                    <touchBar key="touchBar" id="pod-cq-qzz" userLabel="Stations Touch Bar">
+                        <touchBarItems>
+                            <touchBarItem id="Ge1-ZW-pOF">
+                                <viewController key="viewController" id="kFn-Vg-iQj">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bt2-Zy-8RH">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarPlayTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O8A-Lu-GOI">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Play" help="Press to listen to the selected station." identifier="TouchBarPlayBtn"/>
+                                        <connections>
+                                            <action selector="touchBarPlayBtnPressed:" target="6pg-fy-lXi" id="zw9-nB-9tQ"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="CS3-8z-0ta">
+                                <viewController key="viewController" id="HNm-er-M1D">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bnJ-4u-psN">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarComposeTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="48x-38-efv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Edit" help="Press to update the selected station." identifier="TouchBarEditBtn"/>
+                                        <connections>
+                                            <action selector="touchBarEditBtnPressed:" target="6pg-fy-lXi" id="T0S-cO-uSF"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="veE-4u-8Iv" userLabel="Touch Bar Delete">
+                                <viewController key="viewController" id="4M0-Ct-bS1">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-HY-cIo">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarDeleteTemplate" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kXa-NQ-hOU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Delete" help="Press to remove the selected station." identifier="TouchBarDeleteBtn"/>
+                                        <connections>
+                                            <action selector="touchBarDeleteBtnPressed:" target="6pg-fy-lXi" id="nOt-f2-JuX"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceSmall" id="mPa-Hk-9Px"/>
+                            <touchBarItem id="cGt-Dg-DHH" userLabel="Touch Bar Search">
+                                <viewController key="viewController" id="WTF-kq-cx1">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zOf-gj-MeJ">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarSearchTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AOy-c0-bg5">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Search" help="Press to start searching for stations" identifier="TouchBarSearchBtn"/>
+                                        <connections>
+                                            <action selector="touchBarSearchBtnPressed:" target="6pg-fy-lXi" id="CT5-jn-hQT"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="72" height="30"/>
+                            </touchBarItem>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="aAB-Nd-mkl"/>
+                            <touchBarItem id="ecC-MJ-QCp">
+                                <viewController key="viewController" id="jVD-PF-ZOn">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9ZL-x5-U41">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoUpTemplate" imagePosition="overlaps" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gu9-om-YOv">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Up" help="Navigate up the stations list" identifier="TouchBarUpBtn"/>
+                                        <connections>
+                                            <action selector="touchBarUpBtnPressed:" target="6pg-fy-lXi" id="XBh-cs-o2M"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarItem id="k18-Ql-B54">
+                                <viewController key="viewController" id="zNU-oI-Pcw">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Wnn-LD-5d4">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarGoDownTemplate" imagePosition="only" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="feq-Ez-ub6">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Down" help="Navigate down the stations list" identifier="TouchBarDownBtn"/>
+                                        <connections>
+                                            <action selector="touchBarDownBtnPressed:" target="6pg-fy-lXi" id="MrF-6u-t2V"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                            </touchBarItem>
+                            <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="QQj-6r-rjU"/>
+                            <touchBarItem id="wIr-od-eMb" userLabel="Touch Bar Add New">
+                                <viewController key="viewController" id="TH3-w6-keI">
+                                    <button key="view" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iid-hi-RU0">
+                                        <rect key="frame" x="0.0" y="-11" width="84" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSTouchBarAddTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bUN-1B-nhV">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                        </buttonCell>
+                                        <accessibility description="Add new station" help="Press to add a new station to your library" identifier="TouchBarAddNewStationBtn"/>
+                                        <connections>
+                                            <action selector="touchBarAddBtnPressed:" target="6pg-fy-lXi" id="0nB-pO-8Uu"/>
+                                        </connections>
+                                    </button>
+                                </viewController>
+                                <size key="designTimeSize" width="72" height="30"/>
+                            </touchBarItem>
+                        </touchBarItems>
+                    </touchBar>
+                    <connections>
+                        <outlet property="addBtn" destination="7E7-Xw-s5X" id="C9w-1r-MTm"/>
+                        <outlet property="deleteBtn" destination="EMe-3T-UTw" id="Ad1-vt-c4t"/>
+                        <outlet property="editBtn" destination="ztP-vV-LLR" id="yyi-Cj-Wbu"/>
+                        <outlet property="playBtn" destination="Stj-Xc-XQS" id="8hp-bp-0rL"/>
+                        <outlet property="stationDetailSheetWindow" destination="grZ-gd-UJ9" id="RGs-k7-6Xi"/>
+                        <outlet property="stationsArrayController" destination="BvJ-I9-UTc" id="SEV-CA-Bas"/>
+                        <outlet property="stationsSearchField" destination="CVE-aG-pw2" id="Vik-R5-3JC"/>
+                        <outlet property="stationsTableView" destination="QDR-8L-ixe" id="eXi-pb-0J7"/>
+                        <outlet property="tabView" destination="XZL-tz-Zoi" id="6VM-RC-HK2"/>
+                        <outlet property="touchBarAddBtn" destination="iid-hi-RU0" id="IVm-6q-Rqb"/>
+                        <outlet property="touchBarDeleteBtn" destination="i1i-HY-cIo" id="C02-lc-ViR"/>
+                        <outlet property="touchBarDownBtn" destination="Wnn-LD-5d4" id="BEg-EO-ex6"/>
+                        <outlet property="touchBarEditBtn" destination="bnJ-4u-psN" id="C21-Pc-58w"/>
+                        <outlet property="touchBarPlayBtn" destination="Bt2-Zy-8RH" id="Oy3-Ru-tZr"/>
+                        <outlet property="touchBarSearchBtn" destination="zOf-gj-MeJ" id="wt1-NK-cwF"/>
+                        <outlet property="touchBarUpBtn" destination="9ZL-x5-U41" id="GVy-Md-YNX"/>
+                    </connections>
+                </viewController>
+                <customObject id="b3w-ss-xG9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController mode="entity" entityName="Station" usesLazyFetching="YES" fetchPredicateFormat="isSoftDeleted == NO" editable="NO" automaticallyPreparesContent="YES" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="BvJ-I9-UTc">
+                    <connections>
+                        <binding destination="6pg-fy-lXi" name="managedObjectContext" keyPath="managedObjectContext" id="zT0-ns-kaG"/>
+                    </connections>
+                </arrayController>
+                <window identifier="StationDetailSheet" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" animationBehavior="default" id="grZ-gd-UJ9" userLabel="Station Detail Sheet" customClass="StationDetailSheetWindow" customModule="Radio" customModuleProvider="target">
+                    <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                    <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                    <rect key="contentRect" x="196" y="240" width="480" height="309"/>
+                    <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1025"/>
+                    <view key="contentView" id="A9T-qZ-78Y">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="309"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="64i-fM-YYf">
+                                <rect key="frame" x="416" y="13" width="51" height="32"/>
+                                <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Eg8-ei-NUz">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="okayBtnPressed:" target="grZ-gd-UJ9" id="UCv-gF-BsO"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uAY-xt-rIp">
+                                <rect key="frame" x="342" y="13" width="76" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P5j-kJ-XYU">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelBtnPressed:" target="grZ-gd-UJ9" id="dlf-Fw-3YB"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UZX-mg-MO4">
+                                <rect key="frame" x="18" y="273" width="180" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="176" id="191-5R-A0g"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Stream/Playlist URL:" id="mQD-Rz-qGN">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0V-Ps-Szx">
+                                <rect key="frame" x="18" y="220" width="96" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Station Name:" id="IDx-EH-VV5">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SgK-hQ-YqA">
+                                <rect key="frame" x="20" y="244" width="440" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="Flm-8o-2t9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </textFieldCell>
+                                <accessibility description="Stream or playlist url" help="Add the url of the stream or playlist here." identifier="UrlTextField"/>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9AD-Pk-0cx">
+                                <rect key="frame" x="20" y="191" width="440" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="2Xs-Ao-bT9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility description="Station Name" help="The name of the station." identifier="NameTextField"/>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JJy-cu-NMm">
+                                <rect key="frame" x="18" y="167" width="207" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="203" id="wx1-JY-YMt"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Station Description (optional):" id="8sJ-IN-Rk5">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hie-tS-FYw">
+                                <rect key="frame" x="20" y="138" width="440" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="YCE-C7-6f5">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility description="Station description" help="The description of the station. This field is optional." identifier="DescriptionTextField"/>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-YO-Uhh">
+                                <rect key="frame" x="18" y="114" width="131" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="lmn-b0-2VI"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="City (optional):" id="kfE-Hz-ysA">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbs-2i-mGA">
+                                <rect key="frame" x="20" y="85" width="200" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ew8-wz-CIm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility description="City" help="The city of the station. This field is optional." identifier="CityTextField"/>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zwl-xT-uiI">
+                                <rect key="frame" x="255" y="114" width="131" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="127" id="0uN-yn-R33"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Country (optional):" id="UFD-Sw-PtD">
+                                    <font key="font" metaFont="systemBold"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YHS-oP-87y">
+                                <rect key="frame" x="257" y="85" width="200" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="CTT-Gt-aV0">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <accessibility description="Country" help="The country of the station. This field is optional." identifier="CountryTextField"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="uAY-xt-rIp" firstAttribute="baseline" secondItem="64i-fM-YYf" secondAttribute="baseline" id="3qR-rd-9Al"/>
+                            <constraint firstAttribute="trailing" secondItem="YHS-oP-87y" secondAttribute="trailing" constant="23" id="4q4-FS-2uE"/>
+                            <constraint firstItem="eLg-YO-Uhh" firstAttribute="baseline" secondItem="zwl-xT-uiI" secondAttribute="baseline" id="9it-wb-tXm"/>
+                            <constraint firstItem="zwl-xT-uiI" firstAttribute="leading" secondItem="YHS-oP-87y" secondAttribute="leading" id="B8v-wb-d6o"/>
+                            <constraint firstItem="9AD-Pk-0cx" firstAttribute="leading" secondItem="JJy-cu-NMm" secondAttribute="leading" id="E0m-h1-lD9"/>
+                            <constraint firstItem="UZX-mg-MO4" firstAttribute="top" secondItem="A9T-qZ-78Y" secondAttribute="top" constant="20" symbolic="YES" id="Fvk-Kg-ukT"/>
+                            <constraint firstItem="64i-fM-YYf" firstAttribute="leading" secondItem="uAY-xt-rIp" secondAttribute="trailing" constant="12" symbolic="YES" id="GfF-3R-gev"/>
+                            <constraint firstItem="UZX-mg-MO4" firstAttribute="leading" secondItem="A9T-qZ-78Y" secondAttribute="leading" constant="20" symbolic="YES" id="HzH-dC-HPe"/>
+                            <constraint firstItem="UZX-mg-MO4" firstAttribute="leading" secondItem="SgK-hQ-YqA" secondAttribute="leading" id="LE4-cD-4ph"/>
+                            <constraint firstItem="YHS-oP-87y" firstAttribute="leading" secondItem="Mbs-2i-mGA" secondAttribute="trailing" constant="37" id="Qak-Nl-S1Z"/>
+                            <constraint firstAttribute="trailing" secondItem="SgK-hQ-YqA" secondAttribute="trailing" constant="20" symbolic="YES" id="R6W-bl-Nox"/>
+                            <constraint firstItem="9AD-Pk-0cx" firstAttribute="top" secondItem="Q0V-Ps-Szx" secondAttribute="bottom" constant="8" symbolic="YES" id="TMr-Nd-iLr"/>
+                            <constraint firstItem="JJy-cu-NMm" firstAttribute="leading" secondItem="hie-tS-FYw" secondAttribute="leading" id="TYR-uY-5Dq"/>
+                            <constraint firstItem="SgK-hQ-YqA" firstAttribute="top" secondItem="UZX-mg-MO4" secondAttribute="bottom" constant="8" symbolic="YES" id="UqX-V7-yda"/>
+                            <constraint firstItem="hie-tS-FYw" firstAttribute="top" secondItem="JJy-cu-NMm" secondAttribute="bottom" constant="8" symbolic="YES" id="X3C-Ax-gUB"/>
+                            <constraint firstItem="hie-tS-FYw" firstAttribute="trailing" secondItem="64i-fM-YYf" secondAttribute="trailing" id="blH-qQ-Thc"/>
+                            <constraint firstItem="Q0V-Ps-Szx" firstAttribute="leading" secondItem="9AD-Pk-0cx" secondAttribute="leading" id="ci8-b6-I7x"/>
+                            <constraint firstItem="hie-tS-FYw" firstAttribute="leading" secondItem="eLg-YO-Uhh" secondAttribute="leading" id="dia-XW-0q3"/>
+                            <constraint firstItem="eLg-YO-Uhh" firstAttribute="top" secondItem="hie-tS-FYw" secondAttribute="bottom" constant="8" symbolic="YES" id="eFf-n0-1lr"/>
+                            <constraint firstItem="SgK-hQ-YqA" firstAttribute="leading" secondItem="Q0V-Ps-Szx" secondAttribute="leading" id="gdb-00-MLF"/>
+                            <constraint firstItem="SgK-hQ-YqA" firstAttribute="trailing" secondItem="9AD-Pk-0cx" secondAttribute="trailing" id="gjj-OO-OG7"/>
+                            <constraint firstItem="JJy-cu-NMm" firstAttribute="top" secondItem="9AD-Pk-0cx" secondAttribute="bottom" constant="8" symbolic="YES" id="hW0-4p-wtn"/>
+                            <constraint firstAttribute="trailing" secondItem="zwl-xT-uiI" secondAttribute="trailing" constant="96" id="i7d-75-Q8s"/>
+                            <constraint firstItem="eLg-YO-Uhh" firstAttribute="leading" secondItem="Mbs-2i-mGA" secondAttribute="leading" id="iTp-FG-OcA"/>
+                            <constraint firstItem="9AD-Pk-0cx" firstAttribute="trailing" secondItem="hie-tS-FYw" secondAttribute="trailing" id="piA-vs-2Bf"/>
+                            <constraint firstItem="Mbs-2i-mGA" firstAttribute="baseline" secondItem="YHS-oP-87y" secondAttribute="baseline" id="qdf-f4-XTS"/>
+                            <constraint firstItem="Mbs-2i-mGA" firstAttribute="top" secondItem="eLg-YO-Uhh" secondAttribute="bottom" constant="8" symbolic="YES" id="rMu-Eo-nhK"/>
+                            <constraint firstAttribute="bottom" secondItem="uAY-xt-rIp" secondAttribute="bottom" constant="20" symbolic="YES" id="vyA-Tg-0X3"/>
+                            <constraint firstItem="Q0V-Ps-Szx" firstAttribute="top" secondItem="SgK-hQ-YqA" secondAttribute="bottom" constant="8" symbolic="YES" id="yrt-T0-hgc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="Mbs-2i-mGA" id="qTD-m4-FEP"/>
+                        <outlet property="countryTextField" destination="YHS-oP-87y" id="wm0-s2-JNW"/>
+                        <outlet property="descriptionTextField" destination="hie-tS-FYw" id="dKj-09-qWL"/>
+                        <outlet property="nameTextField" destination="9AD-Pk-0cx" id="Z7t-o3-3W2"/>
+                        <outlet property="urlTextField" destination="SgK-hQ-YqA" id="WF7-tt-Nxq"/>
+                    </connections>
+                </window>
+            </objects>
+            <point key="canvasLocation" x="1027" y="-593"/>
+        </scene>
+        <!--Favourites-->
+        <scene sceneID="tlS-J5-IfT">
+            <objects>
+                <viewController title="Favourites" showSeguePresentationStyle="single" id="wXw-am-rZ2" sceneMemberID="viewController">
+                    <view key="view" id="1XL-QK-nZ8">
+                        <rect key="frame" x="0.0" y="0.0" width="630" height="545"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="xbF-Dw-XeX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="306"/>
+        </scene>
+        <!--Recordings-->
+        <scene sceneID="rBG-ja-ncX">
+            <objects>
+                <viewController title="Recordings" showSeguePresentationStyle="single" id="41E-2h-Nn3" sceneMemberID="viewController">
+                    <view key="view" id="reU-9x-UCP">
+                        <rect key="frame" x="0.0" y="0.0" width="630" height="545"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="pV6-jK-Oht" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="306"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="NSTouchBarAddTemplate" width="14" height="13"/>
+        <image name="NSTouchBarComposeTemplate" width="17" height="15"/>
+        <image name="NSTouchBarDeleteTemplate" width="15" height="17"/>
+        <image name="NSTouchBarGoDownTemplate" width="15" height="9"/>
+        <image name="NSTouchBarGoUpTemplate" width="15" height="9"/>
+        <image name="NSTouchBarPlayTemplate" width="12" height="13"/>
+        <image name="NSTouchBarSearchTemplate" width="15" height="15"/>
+        <image name="preferences_favorites" width="32" height="32"/>
+        <image name="preferences_recordings" width="32" height="32"/>
+        <image name="preferences_stations" width="32" height="32"/>
+    </resources>
+</document>

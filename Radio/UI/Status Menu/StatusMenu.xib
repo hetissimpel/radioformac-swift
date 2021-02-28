@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="0vQ-rg-0xR" userLabel="StatusMenuController" customClass="StatusMenuController" customModule="Radio" customModuleProvider="target">
+            <connections>
+                <outlet property="radioDisplayViewController" destination="15l-Da-ZC9" id="l29-Bg-cFL"/>
+                <outlet property="statusMenu" destination="YPT-WB-OCT" id="hqv-Za-D3R"/>
+            </connections>
+        </customObject>
+        <viewController id="15l-Da-ZC9" customClass="RadioDisplayViewController" customModule="Radio" customModuleProvider="target">
+            <connections>
+                <outlet property="favBtn" destination="afi-Nk-moM" id="8H3-TH-zzv"/>
+                <outlet property="muteBtn" destination="JDg-fe-FFV" id="WdP-c4-8PT"/>
+                <outlet property="playBtn" destination="jBJ-Vu-iEO" id="mkU-Bb-smd"/>
+                <outlet property="recordBtn" destination="QL8-sr-SeM" id="FDK-DF-tDT"/>
+                <outlet property="stationNameTextField" destination="xs6-mC-5gx" id="CgK-rR-bXC"/>
+                <outlet property="trackDetailsScrollingTextView" destination="Avy-7X-n2V" id="oPE-fP-RGe"/>
+                <outlet property="view" destination="mDW-fh-ZWK" id="8ma-nL-j1T"/>
+                <outlet property="volumeSlider" destination="d7M-R9-Ie8" id="zAd-fd-6Vk"/>
+            </connections>
+        </viewController>
+        <menu id="YPT-WB-OCT" userLabel="StatusMenu">
+            <items>
+                <menuItem id="PFf-nR-3FX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <outlet property="view" destination="mDW-fh-ZWK" id="lxU-Yf-kWQ"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="aZX-uA-S36"/>
+                <menuItem title="All Stations..." keyEquivalent="a" id="fOy-if-kNo">
+                    <accessibility description="All stations" identifier="AllStationsMenuItem"/>
+                </menuItem>
+                <menuItem title="Preferences..." keyEquivalent="," id="GkL-r6-aI7">
+                    <accessibility description="Preferences" help="Choose to open preferences dialog box" identifier="PreferencesMenuItem"/>
+                    <connections>
+                        <action selector="preferencesBtnPressed:" target="0vQ-rg-0xR" id="KMf-3P-51o"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="dh5-N0-m37"/>
+                <menuItem title="Quit Radio" keyEquivalent="q" id="kcL-bW-U99">
+                    <accessibility description="Quit" help="Choose to quit radio" identifier="QuitMenuItem"/>
+                    <connections>
+                        <action selector="quitBtnPressed:" target="0vQ-rg-0xR" id="eRj-6N-auA"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="0vQ-rg-0xR" id="hPl-6n-hmM"/>
+            </connections>
+            <point key="canvasLocation" x="58" y="-203"/>
+        </menu>
+        <customView id="mDW-fh-ZWK">
+            <rect key="frame" x="0.0" y="0.0" width="283" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xs6-mC-5gx">
+                    <rect key="frame" x="18" y="60" width="247" height="18"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="No Station" id="638-Yf-Uff">
+                        <font key="font" metaFont="systemBold" size="14"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <accessibility description="Station Name" identifier="StationNameTextField"/>
+                </textField>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Avy-7X-n2V" userLabel="Track Details Scrolling Text View" customClass="ScrollingTextView" customModule="Radio" customModuleProvider="target">
+                    <rect key="frame" x="20" y="39" width="243" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="JCc-Xh-A4i"/>
+                        <constraint firstAttribute="width" constant="243" id="OVx-2S-Efk"/>
+                    </constraints>
+                    <accessibility description="Track Details" identifier="TrackDetailsScrollingTextView"/>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jBJ-Vu-iEO" userLabel="Play Btn">
+                    <rect key="frame" x="20" y="8" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="OlF-Gq-T6p"/>
+                        <constraint firstAttribute="height" constant="22" id="Trw-rb-PtN"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="controls_play_inactive" imagePosition="only" alignment="center" alternateImage="controls_play_active" enabled="NO" imageScaling="proportionallyDown" inset="2" id="WLr-O2-Knt">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Play" help="Play the current selected station (if any)." identifier="PlayBtn"/>
+                    <connections>
+                        <action selector="playBtnPressed:" target="15l-Da-ZC9" id="bZl-Re-2Lo"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="afi-Nk-moM" userLabel="Fav Btn">
+                    <rect key="frame" x="52" y="8" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="22" id="eAI-Fo-Ma2"/>
+                        <constraint firstAttribute="height" constant="22" id="mjj-0v-JP3"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="controls_fav_inactive" imagePosition="only" alignment="center" alternateImage="controls_fav_active" enabled="NO" imageScaling="proportionallyDown" inset="2" id="F6a-u1-9f4">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Play" help="Favourite the current selected station (if any)." identifier="FavBtn"/>
+                    <connections>
+                        <action selector="favBtnPressed:" target="15l-Da-ZC9" id="UtI-zG-UWa"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QL8-sr-SeM" userLabel="Record Btn">
+                    <rect key="frame" x="84" y="8" width="22" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="22" id="To6-OW-dbl"/>
+                        <constraint firstAttribute="width" constant="22" id="ptZ-xW-b9d"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="controls_record_inactive" imagePosition="only" alignment="center" alternateImage="controls_record_active" enabled="NO" imageScaling="proportionallyDown" inset="2" id="mSh-Cx-3Sf">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Play" help="Record the current selected station (if any)." identifier="RecordBtn"/>
+                    <connections>
+                        <action selector="recordBtnPressed:" target="15l-Da-ZC9" id="OAr-zc-u1I"/>
+                    </connections>
+                </button>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d7M-R9-Ie8">
+                    <rect key="frame" x="171" y="8" width="94" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="7Kx-gt-5ti"/>
+                        <constraint firstAttribute="height" constant="15" id="NqU-6g-bbx"/>
+                        <constraint firstAttribute="width" constant="90" id="w4U-sy-vTF"/>
+                    </constraints>
+                    <sliderCell key="cell" continuous="YES" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" sliderType="linear" id="PhG-sy-cOc"/>
+                    <accessibility description="Volume Slider" help="Adjust the volume of the station" identifier="VolumeSlider"/>
+                    <connections>
+                        <action selector="volumeSliderMoved:" target="15l-Da-ZC9" id="eIQ-el-QmS"/>
+                    </connections>
+                </slider>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JDg-fe-FFV" userLabel="Record Btn">
+                    <rect key="frame" x="145" y="8" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="JWg-7T-Fab"/>
+                        <constraint firstAttribute="height" constant="20" id="bsT-Vg-ARE"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="controls_speaker_active" imagePosition="only" alignment="center" alternateImage="controls_speaker_inactive" imageScaling="proportionallyDown" inset="2" id="cq6-ak-nAh">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <accessibility description="Mute" help="Mute the current selected station (if any)." identifier="MuteBtn"/>
+                    <connections>
+                        <action selector="muteBtnPressed:" target="15l-Da-ZC9" id="b5F-zB-W7E"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="QL8-sr-SeM" firstAttribute="leading" secondItem="afi-Nk-moM" secondAttribute="trailing" constant="10" id="0jA-4I-7F6"/>
+                <constraint firstAttribute="trailing" secondItem="Avy-7X-n2V" secondAttribute="trailing" constant="20" id="43p-rc-NIB"/>
+                <constraint firstAttribute="bottom" secondItem="QL8-sr-SeM" secondAttribute="bottom" constant="8" id="8M4-gc-hTq"/>
+                <constraint firstItem="xs6-mC-5gx" firstAttribute="leading" secondItem="mDW-fh-ZWK" secondAttribute="leading" constant="20" id="8lZ-O9-5MW"/>
+                <constraint firstItem="d7M-R9-Ie8" firstAttribute="leading" secondItem="JDg-fe-FFV" secondAttribute="trailing" constant="8" id="Knv-Gu-QZ3"/>
+                <constraint firstAttribute="bottom" secondItem="afi-Nk-moM" secondAttribute="bottom" constant="8" id="NJf-mx-0Fy"/>
+                <constraint firstAttribute="bottom" secondItem="JDg-fe-FFV" secondAttribute="bottom" constant="8" id="Ruz-ih-lR6"/>
+                <constraint firstItem="xs6-mC-5gx" firstAttribute="top" secondItem="mDW-fh-ZWK" secondAttribute="top" constant="7" id="TKA-o5-syG"/>
+                <constraint firstItem="jBJ-Vu-iEO" firstAttribute="leading" secondItem="mDW-fh-ZWK" secondAttribute="leading" constant="20" id="Yr3-3s-BXQ"/>
+                <constraint firstAttribute="trailing" secondItem="d7M-R9-Ie8" secondAttribute="trailing" constant="20" id="gAY-cV-0jj"/>
+                <constraint firstAttribute="bottom" secondItem="d7M-R9-Ie8" secondAttribute="bottom" constant="10" id="huh-3M-d6g"/>
+                <constraint firstItem="afi-Nk-moM" firstAttribute="leading" secondItem="jBJ-Vu-iEO" secondAttribute="trailing" constant="10" id="sPw-6Q-8Pa"/>
+                <constraint firstAttribute="trailing" secondItem="xs6-mC-5gx" secondAttribute="trailing" constant="20" id="sjn-Te-bD6"/>
+                <constraint firstItem="Avy-7X-n2V" firstAttribute="leading" secondItem="mDW-fh-ZWK" secondAttribute="leading" constant="20" id="tBh-hc-1Kg"/>
+                <constraint firstItem="Avy-7X-n2V" firstAttribute="top" secondItem="xs6-mC-5gx" secondAttribute="bottom" constant="3" id="ww0-Kx-wdW"/>
+                <constraint firstAttribute="bottom" secondItem="jBJ-Vu-iEO" secondAttribute="bottom" constant="8" id="znH-kE-Zcf"/>
+            </constraints>
+            <accessibility identifier="RadioDisplayView"/>
+            <point key="canvasLocation" x="-243.5" y="-203.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="controls_fav_active" width="22" height="22"/>
+        <image name="controls_fav_inactive" width="22" height="22"/>
+        <image name="controls_play_active" width="22" height="22"/>
+        <image name="controls_play_inactive" width="22" height="22"/>
+        <image name="controls_record_active" width="22" height="22"/>
+        <image name="controls_record_inactive" width="22" height="22"/>
+        <image name="controls_speaker_active" width="10" height="13"/>
+        <image name="controls_speaker_inactive" width="10" height="13"/>
+    </resources>
+</document>
